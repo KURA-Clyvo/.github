@@ -1,425 +1,221 @@
-<div align="center">
+# KURA × Clyvo Vet
 
-# 🐾 KURA × CLYVO VET
+**Plataforma veterinária em que a triagem por IA no WhatsApp do tutor, o prontuário do veterinário
+e o financeiro do gestor são o mesmo dado.** Três aplicações, duas APIs e um serviço de IA sobre um
+banco Oracle compartilhado.
 
-### Plataforma veterinária completa com IA
-**Sistema clínica + App tutor + Inteligência artificial**
+Desenvolvido como **Challenge FIAP 2026** (2TDS), em parceria com a **Clyvo Vet**.
 
-[![FIAP Challenge 2026](https://img.shields.io/badge/FIAP-Challenge_2026-4A6944?style=for-the-badge)](https://fiap.com.br)
-[![License](https://img.shields.io/badge/License-MIT-1A3A52?style=for-the-badge)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Em_Desenvolvimento-C8810D?style=for-the-badge)]()
-
-[🌐 Site Oficial](#) • [📱 App Tutor](#) • [🏥 Sistema Clínica](#) • [📚 Documentação](#) • [🤝 Contribuir](#contribuindo)
-
----
-
-</div>
-
-## 🎯 Sobre o Projeto
-
-**Kura** é uma plataforma healthtech veterinária B2B2C que integra **gestão clínica**, **engajamento de tutores** e **inteligência artificial** em um ecossistema único. Desenvolvida como parte do **FIAP Challenge 2026** em parceria com a **Clyvo Vet**, nossa missão é modernizar a medicina veterinária através de tecnologia acessível, intuitiva e que prioriza o bem-estar animal.
-
-### 💡 Diferencial Competitivo
-
-| Funcionalidade | Kura | Concorrentes Tradicionais |
-|----------------|------|---------------------------|
-| **IA Integrada** | ✅ Luna (detecção de raça + comportamento) | ❌ Sem IA |
-| **Teleorientação** | ✅ CFMV Resolução 1.465/2022 | ⚠️ Não-regulamentada |
-| **App Tutor** | ✅ Incluído sem custo adicional | ❌ Vendido separadamente |
-| **Receituário Digital** | ✅ ICP-Brasil + ANVISA | ⚠️ PDF simples |
-| **Stack Moderna** | ✅ .NET 10, React Native, YOLOv8 | ❌ Legado (PHP, jQuery) |
-| **Preço Base** | R$ 299/mês | R$ 450-800/mês |
+![FIAP Challenge 2026](https://img.shields.io/badge/FIAP-Challenge_2026-4A6944?style=flat-square)
+![.NET 10](https://img.shields.io/badge/.NET-10-512BD4?style=flat-square&logo=dotnet&logoColor=white)
+![Java 21](https://img.shields.io/badge/Java-21-ED8B00?style=flat-square&logo=openjdk&logoColor=white)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.2.5-6DB33F?style=flat-square&logo=springboot&logoColor=white)
+![Python](https://img.shields.io/badge/Python-FastAPI-3776AB?style=flat-square&logo=python&logoColor=white)
+![React Native](https://img.shields.io/badge/React_Native-0.81-61DAFB?style=flat-square&logo=react&logoColor=black)
+![Oracle](https://img.shields.io/badge/Oracle-19c-F80000?style=flat-square&logo=oracle&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=flat-square&logo=docker&logoColor=white)
 
 ---
 
-## 🏗️ Arquitetura
-┌─────────────────────────────────────────────────────────────┐
-│                        FRONT-END                             │
-├──────────────────────┬──────────────────────┬───────────────┤
-│  📱 Mobile Tutor     │  📱 Mobile Clínica   │  🎨 Design    │
-│  React Native        │  React Native        │    System     │
-│  TypeScript          │  TypeScript          │  HTML/CSS/JS  │
-└──────────────────────┴──────────────────────┴───────────────┘
-▼ REST API
-┌─────────────────────────────────────────────────────────────┐
-│                        BACK-END                              │
-├──────────────────────┬──────────────────────┬───────────────┤
-│  🏥 Clínica API      │  👥 Tutor API        │  🤖 Luna AI   │
-│  .NET 10             │  Java Spring Boot    │  Python       │
-│  PostgreSQL          │  PostgreSQL          │  TensorFlow   │
-│  Redis               │  Redis               │  YOLOv8       │
-└──────────────────────┴──────────────────────┴───────────────┘
-▼
-┌─────────────────────────────────────────────────────────────┐
-│                    INFRAESTRUTURA                            │
-├──────────────────────┬──────────────────────┬───────────────┤
-│  ☁️ AWS (ECS/RDS)    │  🐳 Docker           │  📊 Observ.   │
-│  Kubernetes          │  GitHub Actions      │  DataDog      │
-│  Terraform           │  CI/CD               │  Sentry       │
-└──────────────────────┴──────────────────────┴───────────────┘
-▼
-┌─────────────────────────────────────────────────────────────┐
-│                     INTEGRAÇÕES                              │
-├──────────────────────┬──────────────────────┬───────────────┤
-│  💬 WhatsApp API     │  💳 Stripe/MercadoPago│ 📹 Twilio    │
-│  🔐 ICP-Brasil       │  📧 SendGrid         │  🌐 Webhooks  │
-└──────────────────────┴──────────────────────┴───────────────┘
+## Ver funcionando
+
+| Demonstração | O que aparece |
+|---|---|
+| [**App da clínica**](https://youtube.com/shorts/Ik28Muwtljc) | Agenda, ficha do paciente, prontuário, receituário, teleconsulta, financeiro e o painel de triagens |
+| [**App do tutor**](https://youtu.be/F62_LPbJORQ) | Pets, agendamento, vacinas vencendo, notificações e os consentimentos LGPD |
+
+O ambiente inteiro sobe com um comando, em [`DevOps-Cloud`](https://github.com/KURA-Clyvo/DevOps-Cloud):
+`docker compose up -d` levanta Oracle XE, as duas APIs e a Luna, com o schema criado do zero pelo
+Flyway.
 
 ---
 
-## 📦 Repositórios
+## A cadeia, na ordem em que acontece
 
-### 🎨 Design & Documentação
+O dado é digitado **uma vez**, no primeiro passo. Os quatro seguintes o reaproveitam.
 
-#### [`design-system-docs-KURA`](https://github.com/KURA-Clyvo/design-system-docs-KURA)
-**Motor de tokens centralizado** — Design System completo com componentes, paleta de cores (Sage, Ocean, Amber), tipografia (Cormorant, Lexend) e documentação interativa (Storybooks).
+| | Passo | Onde acontece |
+|---|---|---|
+| **1** | O tutor manda mensagem no WhatsApp. A Luna o identifica pelo telefone e recupera a clínica e os pets. | `kura-luna-ai` |
+| **2** | A Luna classifica a urgência em ALTA, MÉDIA ou BAIXA e responde na hora. A triagem é registrada e chega ao painel da clínica. | `kura-luna-ai` → `backend-clinica-dotnet` |
+| **3** | O veterinário atende: prontuário, receituário em PDF, teleconsulta. O áudio da consulta vira rascunho SOAP — que só entra no prontuário se ele confirmar. | `mobile-clinica-rn` |
+| **4** | A cobrança nasce como **subrecurso do atendimento**, não como formulário à parte. O gestor vê receita, ticket médio e mix por serviço sem ninguém redigitar. | `backend-clinica-dotnet` |
+| **5** | Histórico do pet, vacinas vencendo e notificações aparecem no app do tutor. | `backend-tutor-java` → `mobile-tutor-rn` |
 
-**Tech:** HTML, CSS, React, TypeScript  
-**Status:** ✅ Produção  
-**Highlights:**
-- 🎨 Light + Dark mode
-- 📱 Mobile-first components
-- 🖥️ Desktop-optimized layouts
-- ♿ WCAG 2.1 AA compliant
-
----
-
-### 🏥 Backend Clínica (B2B)
-
-#### [`backend-clinica-dotnet`](https://github.com/KURA-Clyvo/backend-clinica-dotnet)
-API REST para gestão de clínicas veterinárias — prontuário digital (SOAP), agenda, receituário eletrônico com assinatura ICP-Brasil, teleorientação regulamentada.
-
-**Tech:** .NET 10, PostgreSQL, Redis, Entity Framework Core  
-**Status:** 🚧 Desenvolvimento ativo  
-**Highlights:**
-- 📋 Prontuário estruturado (SOAP)
-- 💊 Receituário digital (ICP-Brasil)
-- 📹 Teleorientação (CFMV 1.465/2022)
-- 🔒 LGPD + ISO 27001
-
-**Endpoints principais:**
-POST   /api/v1/consultas
-GET    /api/v1/pacientes/{id}/historico
-POST   /api/v1/prescricoes
-GET    /api/v1/agenda/disponibilidade
+O passo 4 é a decisão de produto de que mais nos orgulhamos: *o dado do gestor é subproduto do
+fluxo do veterinário, nunca trabalho extra para ele.*
 
 ---
 
-### 👥 Backend Tutor (B2C)
+## Estado do projeto
 
-#### [`backend-tutor-java`](https://github.com/KURA-Clyvo/backend-tutor-java)
-API REST para portal de tutores — histórico do pet, agendamentos, notificações, carteira de vacinação.
+Este é um projeto acadêmico com software que roda de verdade. Esta seção existe para que ninguém
+precise adivinhar onde está a fronteira.
 
-**Tech:** Java 17, Spring Boot 3.2, PostgreSQL, Redis  
-**Status:** 🚧 Desenvolvimento ativo  
-**Highlights:**
-- 📅 Agendamento online
-- 🔔 Lembretes automáticos (WhatsApp)
-- 📊 Timeline de consultas
-- 💬 Chat com veterinário
+**Funciona, e dá para conferir no código:**
 
-**Endpoints principais:**
-GET    /api/v1/pets/{id}/vacinas
-POST   /api/v1/agendamentos
-GET    /api/v1/consultas/historico
-POST   /api/v1/chat/mensagens
+- Dois perfis de usuário separados **no servidor**, não na interface: um token de veterinário
+  recebe `403` nas rotas financeiras, e isso está travado em teste automatizado.
+- Prontuário atômico (consulta, vacina, exame e prescrição gravados junto do evento clínico numa
+  transação única), receituário em PDF gerado no servidor, transcrição de áudio para rascunho SOAP,
+  teleconsulta com sala de vídeo bloqueada quando falta o consentimento do tutor.
+- Financeiro do período — receita bruta, ticket médio, mix por serviço e comparação com o período
+  anterior — calculado numa leitura só, para os quatro números nunca discordarem entre si.
+- Consentimento LGPD do tutor com registro insert-only, `Idempotency-Key` obrigatório, revogação,
+  histórico e relatório de dados pessoais do titular (art. 18, I).
+- Multi-tenancy por clínica no ORM, com um teste que quebra se uma entidade nova ficar de fora do
+  filtro.
+- Triagem por regras versionada, monitoramento de câmara fria com ESP32 e alerta de temperatura.
+
+**É entrega acadêmica, não produto:** os blocos PL/SQL de
+[`Mastering-Relational-Database`](https://github.com/KURA-Clyvo/Mastering-Relational-Database) e a
+simulação de hardware no Wokwi em [`IOT-IA`](https://github.com/KURA-Clyvo/IOT-IA).
+
+**Não existe, e não vamos dizer que existe:**
+
+- **Nenhum cliente pagante e nenhuma venda.** Não há CAC, churn, MRR nem NPS medidos — só
+  benchmark de mercado.
+- **Os aplicativos nunca foram publicados em loja.** Não há avaliação de App Store ou Play Store.
+- **Pagamentos, controle de estoque e plano de saúde pet** são roadmap desenhado, não construído.
+- **Nenhuma certificação regulatória.** O receituário em PDF **não** tem assinatura ICP-Brasil, e
+  não há controle de medicamento controlado. A Resolução CFMV 1.465/2022 e a RDC ANVISA 197/2017
+  aparecem no código como **regra de negócio implementada**, o que é coisa diferente de
+  certificação obtida.
+- **Sensor IoT em campo.** O caminho de ingestão e alerta existe e é testado; o hardware está em
+  simulação, não instalado numa clínica.
 
 ---
 
-### 🤖 Inteligência Artificial
+## Arquitetura
 
-#### [`kura-luna-ai`](https://github.com/KURA-Clyvo/kura-luna-ai)
-**Luna** — Motor de IA para detecção de raça, triagem comportamental e prescrição inteligente.
-
-**Tech:** Python 3.11, TensorFlow 2.15, YOLOv8, FastAPI  
-**Status:** ✅ MVP funcional  
-**Highlights:**
-- 🎯 94% acurácia (detecção de raça)
-- 📸 Inferência <300ms (edge computing)
-- 🐕 120 raças suportadas
-- 🔬 50.000+ imagens treinadas
-
-**Modelos:**
-```python
-# Detecção de raça
-modelo_raca = YOLOv8n + MobileNetV3
-dataset = 50k imagens, 120 classes
-acuracia_top1 = 94.2%
-acuracia_top3 = 98.1%
-
-# Detecção comportamental (roadmap Q3/2026)
-modelo_comportamento = LSTM + OpenPose
-alertas = ["coceira_excessiva", "claudicacao", "letargia"]
+```
+                 mobile-tutor-rn                mobile-clinica-rn
+                 React Native · Expo            React Native · Expo
+                 tutor                          veterinário + gestor
+                        │                               │
+                        │ REST                          │ REST
+                        ▼                               ▼
+              backend-tutor-java              backend-clinica-dotnet
+              Java 21 · Spring Boot 3.2       .NET 10 · Clean Architecture
+              :8081  contexto B2C             :8080  contexto B2B
+                        │                               │  ▲
+                        │                               │  │ X-Api-Key
+                        │                               │  │
+                        └──────────┬────────────────────┘  │
+                                   ▼                       │
+                        Oracle 19c (schema único)     kura-luna-ai
+                        Flyway é a única autoridade   Python · FastAPI
+                        de DDL · V1 → V19             :8000  WhatsApp/IA
+                                                            │
+                                                       Twilio (sandbox)
 ```
 
----
+**As duas APIs não conversam por HTTP.** A integração é exclusivamente pelo schema Oracle
+compartilhado, com propriedade de tabela declarada por contexto e um interceptor que lança exceção
+em runtime se um lado tentar escrever na tabela do outro. A tabela `AGENDAMENTO` é a única
+compartilhada para escrita, com trava otimista por versão — conflito devolve `409`.
 
-### 🌐 IoT + Hardware
-
-#### [`IOT-IA`](https://github.com/KURA-Clyvo/IOT-IA)
-Subsistema IoT para câmeras de recepção — captura frames, executa inferência local (edge) e envia detecções para backend.
-
-**Tech:** C++, ESP32, Raspberry Pi 4, MQTT  
-**Status:** 🧪 Protótipo funcional  
-**Highlights:**
-- 📹 Câmera 1080p @ 30fps
-- 🔌 Raspberry Pi 4 (4GB RAM)
-- ⚡ Inferência local (YOLOv8n otimizado)
-- 📡 MQTT para comunicação em tempo real
-
-**Setup:**
-```bash
-# Hardware necessário
-- Raspberry Pi 4 (4GB)
-- Câmera USB/CSI 1080p
-- Cartão SD 32GB (Raspbian OS)
-- Case + alimentação 5V/3A
-```
+Infraestrutura: **Docker Compose** para o ambiente completo e **Azure** para publicação. Não há
+Kubernetes nem Terraform neste projeto.
 
 ---
 
-### 📱 Mobile Apps
+## Repositórios
 
-#### [`mobile-tutor-rn`](https://github.com/KURA-Clyvo/mobile-tutor-rn)
-App nativo (iOS/Android) para tutores de pets — histórico, vacinas, agendamento, chat.
+### Aplicação
 
-**Tech:** React Native 0.73, TypeScript, Expo  
-**Status:** 🚧 Desenvolvimento ativo  
-**Telas:** Splash, Login, Meus Pets, Detalhes Pet, Consultas, Vacinas, Agendamento
+| Repositório | O que é | Stack |
+|---|---|---|
+| [`backend-clinica-dotnet`](https://github.com/KURA-Clyvo/backend-clinica-dotnet) | API do lado clínico: prontuário, agenda, financeiro, tabela de preços, usuários da clínica, teleconsulta, IoT e os endpoints que a Luna consome. Health checks e OpenTelemetry. | .NET 10 · EF Core · Oracle · xUnit |
+| [`backend-tutor-java`](https://github.com/KURA-Clyvo/backend-tutor-java) | API do tutor, com BFF próprio para o app e o módulo completo de consentimento LGPD. Flyway é a autoridade de DDL de todo o ecossistema. | Java 21 · Spring Boot 3.2.5 · Flyway · JUnit |
+| [`kura-luna-ai`](https://github.com/KURA-Clyvo/kura-luna-ai) | Luna: triagem por regras, WhatsApp bidirecional via Twilio, lembrete de vacina e identificação de raça por foto. | Python · FastAPI · PyTorch · YOLOv8n |
+| [`mobile-clinica-rn`](https://github.com/KURA-Clyvo/mobile-clinica-rn) | App da clínica — 12 telas, com os perfis de veterinário e de gestor separados. Roda na New Architecture do React Native. | React Native 0.81 · Expo 54 · TypeScript |
+| [`mobile-tutor-rn`](https://github.com/KURA-Clyvo/mobile-tutor-rn) | App do tutor — 9 telas: pets, agenda, saúde, notificações e consentimentos. | React Native 0.81 · Expo 54 · TypeScript |
 
-#### [`mobile-clinica-rn`](https://github.com/KURA-Clyvo/mobile-clinica-rn)
-App nativo (iOS/Android) para veterinários — prontuário mobile, atendimento rápido, prescrição offline.
+### Infraestrutura, dados e design
 
-**Tech:** React Native 0.73, TypeScript, Expo  
-**Status:** 🚧 Desenvolvimento ativo  
-**Telas:** Login, Dashboard, Pacientes, Atendimento, Prescrição, Luna Feed
-
----
-
-### 🛠️ Infraestrutura & DevOps
-
-#### [`DevOps-Cloud`](https://github.com/KURA-Clyvo/DevOps-Cloud)
-Configuração de infraestrutura AWS, Terraform, CI/CD, monitoramento.
-
-**Tech:** Terraform, Docker, Kubernetes, GitHub Actions, Bash  
-**Status:** 🚧 Desenvolvimento ativo
-
-#### [`Mastering-Relational-Database`](https://github.com/KURA-Clyvo/Mastering-Relational-Database)
-Scripts SQL, modelagem de dados, procedures, triggers.
-
-**Tech:** PL/SQL, Oracle 19c, PostgreSQL 15  
-**Status:** ✅ Entrega acadêmica concluída
-
-#### [`Compliance-QA-Tests`](https://github.com/KURA-Clyvo/Compliance-QA-Tests)
-Testes de compliance (CFMV, LGPD, ANVISA) e QA automatizado.
-
-**Tech:** JUnit, Selenium, Postman, k6  
-**Status:** 🚧 Desenvolvimento ativo
+| Repositório | O que é | Stack |
+|---|---|---|
+| [`DevOps-Cloud`](https://github.com/KURA-Clyvo/DevOps-Cloud) | Compose do ambiente inteiro, pipelines de CI e o script que confere o contrato entre os apps e as APIs contra o Oracle real. | Docker Compose · GitHub Actions · Azure |
+| [`IOT-IA`](https://github.com/KURA-Clyvo/IOT-IA) | Monitoramento de câmara fria de vacinas: ESP32 com DHT22 e LDR publicando por MQTT, Node-RED persistindo leitura e alerta, dashboard e correlação com clima externo. Faixa de 2 °C a 8 °C conforme a RDC ANVISA 197/2017. | ESP32 · MQTT · Node-RED · Wokwi |
+| [`Mastering-Relational-Database`](https://github.com/KURA-Clyvo/Mastering-Relational-Database) | Modelagem e blocos PL/SQL sobre o schema do KURA — cursores, exceções e auditoria em `LOG_ERRO`. Entrega da disciplina. | Oracle · PL/SQL |
+| [`design-system-docs-KURA`](https://github.com/KURA-Clyvo/design-system-docs-KURA) | Tokens e componentes das duas superfícies. `sage` é o contexto do tutor, `ocean` o da clínica — a mesma API de componente atende as duas sem bifurcar código. | HTML · CSS · TypeScript |
+| [`Compliance-QA-Tests`](https://github.com/KURA-Clyvo/Compliance-QA-Tests) | Reservado para a disciplina de QA e compliance. **Ainda sem conteúdo.** | — |
 
 ---
 
-## 🚀 Tech Stack
+## Números
 
-### Frontend
-![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Expo](https://img.shields.io/badge/Expo-000020?style=for-the-badge&logo=expo&logoColor=white)
+Medidos em **setembro de 2026**, rodando os comandos nos repositórios. A contagem viva de cada
+suíte está no CI do respectivo repositório.
 
-### Backend
-![.NET](https://img.shields.io/badge/.NET-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
-![Spring](https://img.shields.io/badge/Spring-6DB33F?style=for-the-badge&logo=spring&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
+| | |
+|---|---|
+| Telas de produto | 12 no app da clínica · 9 no app do tutor |
+| Testes automatizados | **2.300** somados — .NET 672 · Java 197 · app clínica 1.077 · app tutor 172 · Luna 182 <sup>1</sup> |
+| Banco compartilhado | 30 tabelas · migrations versionadas de V1 a V19 |
+| Ambiente completo | 5 contêineres, do zero, por `docker compose up -d` |
+| Integração contínua | ativa nos 6 repositórios de aplicação e infraestrutura |
+| Triagem da Luna | 11 categorias de sintoma em 3 níveis · regras versão `1.0` |
+| Identificação de raça | 37 rótulos · YOLOv8n para detecção, MobileNetV3-small para classificação <sup>2</sup> |
 
-### IA/ML
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![TensorFlow](https://img.shields.io/badge/TensorFlow-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
-
-### Infra/DevOps
-![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
-![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)
+<sup>1</sup> A suíte completa da Luna exige Python 3.12 com `torch` e `ultralytics`; sem essas
+dependências roda o subconjunto de 182 testes indicado acima.
+<sup>2</sup> Os pesos treinados não são versionados neste repositório. Não publicamos métrica de
+acurácia porque não mantemos um conjunto de avaliação com procedimento documentado — quando
+houver, o número vem com a metodologia junto.
 
 ---
 
-## 🏆 Compliance & Certificações
+## Como a triagem funciona
 
-✅ **CFMV Resolução 1.465/2022** — Teleorientação veterinária regulamentada  
-✅ **LGPD** — Lei Geral de Proteção de Dados (consentimento, logs, auditoria)  
-✅ **ICP-Brasil** — Assinatura digital de receituário eletrônico  
-🔄 **ISO 27001** — Segurança da informação (em processo)  
-✅ **ANVISA** — Controle de medicamentos controlados (Portaria 344/98)
+A Luna **não** é um modelo generativo respondendo livremente. Ela compara a mensagem do tutor com
+listas versionadas de sintomas, soma pontos por nível e devolve **quais palavras** dispararam a
+classificação, junto da versão das regras que estava valendo.
 
----
+| Nível | Categorias | Peso |
+|---|---|---|
+| `ALTA` | convulsão · sangramento · envenenamento · dispneia · trauma | 10 |
+| `MEDIA` | vômito · diarreia · letargia · febre | 3 |
+| `BAIXA` | dúvida de rotina · comportamento | 1 |
 
-## 📊 Métricas do Projeto
-┌─────────────────────────────────────────────────────────────┐
-│  TRAÇÃO (Q1/2026)                                           │
-├─────────────────────────────────────────────────────────────┤
-│  • 120+ clínicas veterinárias parceiras                     │
-│  • 15.000+ tutores ativos no app                            │
-│  • 3.500+ consultas realizadas/mês                          │
-│  • R$ 450K MRR (Monthly Recurring Revenue)                  │
-│  • 4.8★ avaliação App Store                                 │
-│  • 98% satisfação veterinários (NPS)                        │
-└─────────────────────────────────────────────────────────────┘
-┌─────────────────────────────────────────────────────────────┐
-│  TECH METRICS                                               │
-├─────────────────────────────────────────────────────────────┤
-│  • 9 repositórios públicos                                  │
-│  • 5 linguagens (C#, Java, Python, TypeScript, C++)        │
-│  • 1.200+ commits (últimos 3 meses)                        │
-│  • 94% cobertura de testes (backend)                       │
-│  • <300ms latência API (p95)                               │
-│  • 99.8% uptime (últimos 30 dias)                          │
-└─────────────────────────────────────────────────────────────┘
+É por isso que chamamos a triagem de auditável: dá para explicar por que um caso subiu na fila, e
+dá para versionar a mudança quando um veterinário discordar dela. **A IA sugere, o veterinário
+decide** — nada entra no prontuário sem confirmação humana, que é o que a Resolução CFMV 1.465/2022
+exige.
 
 ---
 
-## 🎓 Time
+## Time
 
-<table>
-  <tr>
-    <td align="center">
-      <a href="https://github.com/FelipeFerrete">
-        <img src="https://github.com/FelipeFerrete.png" width="100px;" alt="Felipe Ferrete"/><br />
-        <sub><b>Felipe Ferrete</b></sub>
-      </a><br />
-      <sub>Tech Lead • Backend .NET • IA/IoT</sub><br />
-      <sub>RM 562999</sub>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://via.placeholder.com/100" width="100px;" alt="Guilherme"/><br />
-        <sub><b>Guilherme</b></sub>
-      </a><br />
-      <sub>UX/UI Designer • Figma • React Native</sub><br />
-      <sub>RM XXXXX</sub>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://via.placeholder.com/100" width="100px;" alt="Gustavo"/><br />
-        <sub><b>Gustavo</b></sub>
-      </a><br />
-      <sub>Mobile Dev • React Native • QA</sub><br />
-      <sub>RM XXXXX</sub>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://via.placeholder.com/100" width="100px;" alt="Clayton"/><br />
-        <sub><b>Clayton</b></sub>
-      </a><br />
-      <sub>DevOps • AWS • Terraform • CI/CD</sub><br />
-      <sub>RM XXXXX</sub>
-    </td>
-    <td align="center">
-      <a href="#">
-        <img src="https://via.placeholder.com/100" width="100px;" alt="Nikolas"/><br />
-        <sub><b>Nikolas</b></sub>
-      </a><br />
-      <sub>Backend Dev • Java Spring Boot</sub><br />
-      <sub>RM XXXXX</sub>
-    </td>
-  </tr>
-</table>
+Turma 2TDS · Challenge FIAP 2026.
+
+| Integrante | RM | Responsabilidade |
+|---|---|---|
+| [**Felipe Ferrete**](https://github.com/FelipeFerrete) | RM562999 | Tech lead · Backend .NET · IoT e IA |
+| **Nikolas Brisola** | RM564371 | Backend Java · API do tutor |
+| **Guilherme Sola** | RM563674 | Mobile tutor · UX |
+| **Gustavo Bosak** | RM566315 | Mobile clínica · QA |
+| **Clayton Alves** | RM562285 | DevOps · Banco de dados Oracle |
+
+Para falar com a equipe, use o perfil de GitHub de cada integrante ou abra uma *issue* no
+repositório correspondente.
 
 ---
 
-## 🤝 Contribuindo
+## Contribuindo
 
-Quer contribuir com o projeto? Siga nosso guia:
+Commits seguem [Conventional Commits](https://www.conventionalcommits.org/) em inglês; código e
+comentários em português. Antes de abrir um PR, rode a suíte e o *linter* do repositório que você
+tocou — os dois rodam no CI e barram o merge.
 
-### 1. Fork & Clone
-```bash
-# Fork no GitHub, depois:
-git clone https://github.com/SEU-USUARIO/REPO-DESEJADO.git
-cd REPO-DESEJADO
-```
+## Licença
 
-### 2. Branch
-```bash
-# Crie uma branch descritiva:
-git checkout -b feature/nova-funcionalidade
-# ou
-git checkout -b fix/correcao-bug
-```
-
-### 3. Commit
-```bash
-# Use Conventional Commits:
-git commit -m "feat: adiciona endpoint de prescrição"
-git commit -m "fix: corrige validação de CPF"
-git commit -m "docs: atualiza README com exemplos"
-```
-
-### 4. Pull Request
-- Descreva claramente o que foi feito
-- Adicione screenshots se for UI
-- Garanta que os testes passam
-- Aguarde code review
-
-### Convenções de Código
-
-**Backend .NET:**
-- PascalCase para classes/métodos
-- camelCase para variáveis
-- Async suffix para métodos assíncronos
-- Documentação XML obrigatória em APIs públicas
-
-**Backend Java:**
-- PascalCase para classes
-- camelCase para métodos/variáveis
-- @Annotations do Spring documentadas
-- Testes JUnit para toda lógica de negócio
-
-**Frontend (React Native):**
-- PascalCase para componentes
-- camelCase para funções/variáveis
-- Props tipadas (TypeScript)
-- Design System tokens (nunca hardcoded colors)
+Apenas [`design-system-docs-KURA`](https://github.com/KURA-Clyvo/design-system-docs-KURA) declara
+licença **MIT** hoje. Os demais repositórios ainda **não têm arquivo de licença** e, por padrão do
+GitHub, estão sob todos os direitos reservados. Estamos revisando isso repositório a repositório —
+até lá, entre em contato antes de reutilizar código.
 
 ---
 
-## 📞 Contato
-
-**Dúvidas sobre o projeto?**
-- 📧 Email: contato@clyvovet.com.br
-- 💼 LinkedIn: [linkedin.com/company/clyvovet](https://linkedin.com/company/clyvovet)
-- 🌐 Site: [clyvovet.com.br](https://clyvovet.com.br)
-
-**Para investidores/parceiros:**
-- 📧 invest@clyvovet.com.br
-- 📧 partners@clyvovet.com.br
-
-**Imprensa:**
-- 📧 press@clyvovet.com.br
-- 📄 [Media Kit](https://clyvovet.com.br/press)
-
----
-
-## 📄 Licença
-
-Este projeto é licenciado sob a **MIT License** — veja [LICENSE](LICENSE) para detalhes.
-
-Alguns módulos possuem licenças específicas:
-- `kura-luna-ai`: Apache 2.0 (dependências TensorFlow)
-- `backend-clinica-dotnet`: MIT
-- `design-system-docs-KURA`: MIT
-
----
-
-<div align="center">
-
-### 🐾 Kura — O cuidado registrado.
-
-**Desenvolvido com 💚 pela equipe FIAP Challenge 2026**
-
-[![FIAP](https://img.shields.io/badge/FIAP-Challenge_2026-4A6944?style=flat-square)](https://fiap.com.br)
-[![Clyvo Vet](https://img.shields.io/badge/Parceiro-Clyvo_Vet-1A3A52?style=flat-square)](https://clyvovet.com.br)
-
-[⬆ Voltar ao topo](#-kura--clyvo-vet)
-
-</div>
+**KURA — o cuidado registrado.**
