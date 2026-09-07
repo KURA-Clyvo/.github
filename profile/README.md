@@ -211,13 +211,19 @@ tocou — os dois rodam no CI e barram o merge.
 
 ## Licença
 
-Os **11 repositórios da organização** estão sob licença **MIT**, com copyright dos cinco
-integrantes que escreveram o código. Use, modifique e redistribua à vontade, inclusive
-comercialmente — basta manter o aviso de copyright.
+**Licença proprietária, todos os direitos reservados**, com copyright dos cinco integrantes que
+escreveram o código — nos 11 repositórios da organização.
+
+Os repositórios são públicos **para leitura**, e isso é deliberado. Banca examinadora, avaliador e
+recrutador podem ler o código, clonar para estudar, executar localmente para avaliar e citar com
+atribuição, **sem pedir autorização a ninguém**. O que exige permissão por escrito é uso em
+produção, uso comercial, redistribuição, hospedagem como serviço e obra derivada. O texto completo
+está no arquivo [`LICENSE`](https://github.com/KURA-Clyvo/.github/blob/main/LICENSE) de cada
+repositório.
 
 As dependências de terceiros mantêm as licenças próprias. A que vale mencionar é o **QuestPDF**,
 usado na geração do receituário: a licença dele é **Community**, gratuita abaixo de US$ 1 milhão
-de receita anual, e não MIT.
+de receita anual.
 
 ---
 
