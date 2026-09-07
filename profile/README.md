@@ -211,10 +211,13 @@ tocou — os dois rodam no CI e barram o merge.
 
 ## Licença
 
-Apenas [`design-system-docs-KURA`](https://github.com/KURA-Clyvo/design-system-docs-KURA) declara
-licença **MIT** hoje. Os demais repositórios ainda **não têm arquivo de licença** e, por padrão do
-GitHub, estão sob todos os direitos reservados. Estamos revisando isso repositório a repositório —
-até lá, entre em contato antes de reutilizar código.
+Os **11 repositórios da organização** estão sob licença **MIT**, com copyright dos cinco
+integrantes que escreveram o código. Use, modifique e redistribua à vontade, inclusive
+comercialmente — basta manter o aviso de copyright.
+
+As dependências de terceiros mantêm as licenças próprias. A que vale mencionar é o **QuestPDF**,
+usado na geração do receituário: a licença dele é **Community**, gratuita abaixo de US$ 1 milhão
+de receita anual, e não MIT.
 
 ---
 
