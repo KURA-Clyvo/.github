@@ -12,7 +12,7 @@ Desenvolvido como **Challenge FIAP 2026** (2TDS), em parceria com a **Clyvo Vet*
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.2.5-6DB33F?style=flat-square&logo=springboot&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-FastAPI-3776AB?style=flat-square&logo=python&logoColor=white)
 ![React Native](https://img.shields.io/badge/React_Native-0.81-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Oracle](https://img.shields.io/badge/Oracle-19c-F80000?style=flat-square&logo=oracle&logoColor=white)
+![Oracle](https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=oracle&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=flat-square&logo=docker&logoColor=white)
 
 ---
@@ -103,9 +103,9 @@ simulação de hardware no Wokwi em [`IOT-IA`](https://github.com/KURA-Clyvo/IOT
                         │                               │  │
                         └──────────┬────────────────────┘  │
                                    ▼                       │
-                        Oracle 19c (schema único)     kura-luna-ai
+                        Oracle (schema único)          kura-luna-ai
                         Flyway é a única autoridade   Python · FastAPI
-                        de DDL · V1 → V19             :8000  WhatsApp/IA
+                        de DDL · V1 → V23             :8000  WhatsApp/IA
                                                             │
                                                        Twilio (sandbox)
 ```
@@ -129,7 +129,7 @@ Kubernetes nem Terraform neste projeto.
 | [`backend-clinica-dotnet`](https://github.com/KURA-Clyvo/backend-clinica-dotnet) | API do lado clínico: prontuário, agenda, financeiro, tabela de preços, usuários da clínica, teleconsulta, IoT e os endpoints que a Luna consome. Health checks e OpenTelemetry. | .NET 10 · EF Core · Oracle · xUnit |
 | [`backend-tutor-java`](https://github.com/KURA-Clyvo/backend-tutor-java) | API do tutor, com BFF próprio para o app e o módulo completo de consentimento LGPD. Flyway é a autoridade de DDL de todo o ecossistema. | Java 21 · Spring Boot 3.2.5 · Flyway · JUnit |
 | [`kura-luna-ai`](https://github.com/KURA-Clyvo/kura-luna-ai) | Luna: triagem por regras, WhatsApp bidirecional via Twilio, lembrete de vacina e identificação de raça por foto. | Python · FastAPI · PyTorch · YOLOv8n |
-| [`mobile-clinica-rn`](https://github.com/KURA-Clyvo/mobile-clinica-rn) | App da clínica — 12 telas, com os perfis de veterinário e de gestor separados. Roda na New Architecture do React Native. | React Native 0.81 · Expo 54 · TypeScript |
+| [`mobile-clinica-rn`](https://github.com/KURA-Clyvo/mobile-clinica-rn) | App da clínica — 15 telas, com os perfis de veterinário e de gestor separados. Roda na New Architecture do React Native. | React Native 0.81 · Expo 54 · TypeScript |
 | [`mobile-tutor-rn`](https://github.com/KURA-Clyvo/mobile-tutor-rn) | App do tutor — 9 telas: pets, agenda, saúde, notificações e consentimentos. | React Native 0.81 · Expo 54 · TypeScript |
 
 ### Infraestrutura, dados e design
@@ -146,22 +146,20 @@ Kubernetes nem Terraform neste projeto.
 
 ## Números
 
-Medidos em **setembro de 2026**, rodando os comandos nos repositórios. A contagem viva de cada
+Medidos em **outubro de 2026**, rodando os comandos nos repositórios. A contagem viva de cada
 suíte está no CI do respectivo repositório.
 
 | | |
 |---|---|
-| Telas de produto | 12 no app da clínica · 9 no app do tutor |
-| Testes automatizados | **2.300** somados — .NET 672 · Java 197 · app clínica 1.077 · app tutor 172 · Luna 182 <sup>1</sup> |
-| Banco compartilhado | 30 tabelas · migrations versionadas de V1 a V19 |
+| Telas de produto | 15 no app da clínica · 9 no app do tutor |
+| Testes automatizados | Uma suíte por repositório, executada no CI de cada um — a contagem viva fica lá, não aqui |
+| Banco compartilhado | 30 tabelas · migrations versionadas de V1 a V23 |
 | Ambiente completo | 5 contêineres, do zero, por `docker compose up -d` |
 | Integração contínua | ativa nos 6 repositórios de aplicação e infraestrutura |
 | Triagem da Luna | 11 categorias de sintoma em 3 níveis · regras versão `1.0` |
-| Identificação de raça | 37 rótulos · YOLOv8n para detecção, MobileNetV3-small para classificação <sup>2</sup> |
+| Identificação de raça | 37 rótulos · YOLOv8n para detecção, MobileNetV3-small para classificação <sup>1</sup> |
 
-<sup>1</sup> A suíte completa da Luna exige Python 3.12 com `torch` e `ultralytics`; sem essas
-dependências roda o subconjunto de 182 testes indicado acima.
-<sup>2</sup> Os pesos treinados não são versionados neste repositório. Não publicamos métrica de
+<sup>1</sup> Os pesos treinados não são versionados neste repositório. Não publicamos métrica de
 acurácia porque não mantemos um conjunto de avaliação com procedimento documentado — quando
 houver, o número vem com a metodologia junto.
 
